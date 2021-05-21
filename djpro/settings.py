@@ -24,7 +24,7 @@ SECRET_KEY = '&@i66%fbyz=sg45h5d+zh-_l0)mb&k&-*86n@6l8cv8wpn%g9g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -80,7 +80,8 @@ DATABASES = {
         'NAME': 'test',  # 数据库名
         'USER': 'root',  # 账号
         'PASSWORD': '12345678',  # 密码
-        'HOST': '127.0.0.1',  # HOST
+        'HOST': '123.57.81.52',  # HOST
+        # 'HOST': '127.0.0.1',  # HOST
         'POST': 3306,  # 端口
     }
 }
@@ -128,6 +129,7 @@ STATICFILES_DIRS = [
 ]
 
 REST_FRAMEWORK = {
+    'DATE_FORMAT': '%Y-%m-%d',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)

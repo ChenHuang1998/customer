@@ -48,7 +48,7 @@ var app = new Vue({
         device_filter: function () {
             this.name = $("#validationDefault01").val();
             this.position = $("#validationDefault02").val();
-            this.date = $("#validationCustom03").val();
+            this.date = $("#validationDefault03").val();
             this.types = $("#validationDefault04").val();
             console.log(this.name, this.position, this.date, this.types)
             this.$http.get(globalurl, {

@@ -18,7 +18,8 @@ var app = new Vue({
         // 前一页
         previous: 0,
 
-        // 过滤字段，
+        // 过滤字段
+        id: null,
         name: '',
         position: '',
         types: '',
@@ -80,19 +81,19 @@ var app = new Vue({
             this.position = $("#formGroupExampleInput2").val();
             this.date = $("#formGroupExampleInput3").val();
             this.types = $("#formGroupExampleInput4").val();
-            if (this.name === ''){
+            if (this.name === '') {
                 $("#error_title").text('名称不能为空')
                 return false
             }
-            if (this.position === ''){
+            if (this.position === '') {
                 $("#error_title").text('位置不能为空')
                 return false
             }
-            if (this.date === ''){
+            if (this.date === '') {
                 $("#error_title").text('时间不能为空')
                 return false
             }
-            if (this.types === ''){
+            if (this.types === '') {
                 $("#error_title").text('类型不能为空')
                 return false
             }
@@ -113,12 +114,39 @@ var app = new Vue({
                 }
             )
         },
-        update_data:function (id,name,position,date,types){
+        update_data: function (id, name, position, date, types) {
             this.name = name
             this.position = position
             this.date = date
             this.types = types
+            this.id = id
             $('#updateModal').modal("show")
+        },
+        update_confirm: function () {
+            var url = globalurl + this.id + '/'
+            this.name = $("#updateinput1").val();
+            this.position = $("#updateinput2").val();
+            this.date = $("#updateinput3").val();
+            this.types = $("#updateinput4").val();
+            this.$http.put(url,
+                {
+                    "name": this.name,
+                    "position": this.position,
+                    "date": this.date,
+                    "types": this.types,
+                }
+                ).then(
+                function(data){
+                    // console.log(data);
+                    alert("修改成功")
+                    window.location.reload()
+
+                },
+                function (error) {
+                    console.log(error);
+                }
+            )
+
         },
         delete_data: function (id) {
             var url = globalurl + id
@@ -127,7 +155,6 @@ var app = new Vue({
                     console.log(data);
                     alert("删除成功")
                     window.location.reload()
-
 
                 },
                 function (error) {

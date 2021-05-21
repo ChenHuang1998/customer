@@ -7,4 +7,4 @@ class DataForm(models.Model):
     name = models.CharField(max_length=64)
     position = models.CharField(max_length=64)
     types = models.CharField(max_length=64)
-    date = models.DateField(null=True,blank=True)
+    date = models.DateField(auto_now_add=True)

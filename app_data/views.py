@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from app_data.models import DataForm
-from app_data.serializer import DataFormSerializer
+from app_data.serializer import DataFormSerializer, DataFormFilter
+
 
 # import random
 # lst = []
@@ -17,4 +18,4 @@ def home(request):
 class DataInfoViewSet(viewsets.ModelViewSet):
     queryset = DataForm.objects.all()
     serializer_class = DataFormSerializer
-    filter_fields = ('name', 'position', 'types', 'date',)
+    filter_class = DataFormFilter
